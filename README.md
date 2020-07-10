@@ -61,12 +61,12 @@ and a dialog should open with four buttons at the top and an empty canvas. **To 
 ## Face Detection
 You can detect faces in an image by clicking the **left-most button** on the dialog as highlighted below
 ![](./tutorial/facial-recog.png)
-The image will be drawn along with box corresponding to the aspects of the image that are predicted to be a face. The number that appears denotes the probability that the image aspect is a face. By default, the convolutioal neural net (CNN) used here is the **SsdMobilenetv1** with a minimum confidence threshold of 0.5.
+The image will be drawn along with box corresponding to the aspects of the image that are predicted to be a face. The number that appears denotes the probability that the image aspect is a face. I set the convolutional neural net (CNN) to the **SsdMobilenetv1** model with a **minimum confidence threshold of 0.5**.
 
 ## Facial Expression (Sentiment) Detection
 To predict sentiment in the image, click on the **second left-most button** as highighted below
 ![](./tutorial/sentiment-analysis.png)
-A text box will appear with the emotion (here, "happy") as well as the probability that the emotion is present in the predicted face (in this case, 1).
+A text box will appear with the emotion (here, "happy") as well as the probability that the emotion is present in the predicted face (in this case, 0.99).
 
 ## Age and Sex Detection
 Finally, you can also get the model to guess the detected face's age and sex by clicking on the **third left-most button** of the dialog 
