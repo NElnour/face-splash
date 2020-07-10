@@ -83,7 +83,7 @@ export default {
     return {
       images: [],
       dialog: false,
-      currImage: "",
+      currImage: ""
     };
   },
   methods: {
@@ -116,8 +116,8 @@ export default {
     guessSentiment() {
       let image = document.getElementById(this.currImage);
       sentimentDetect(image, this.$refs.mappedImage);
-    },
-  },
+    }
+  }
 };
 </script>
 
@@ -133,11 +133,10 @@ div {
   text-align: center;
 }
 .mapped-image {
-  margin-top: 25%;
+  margin-top: 5%;
 }
 .dialog-actions {
- //background-color: #c8e9a0;
- background-color: #6dd3ce;
+  background-color: #6dd3cebb;
 }
 </style>
 // load manifest or model weights JSONs to load models // map each model to

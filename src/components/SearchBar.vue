@@ -31,13 +31,13 @@ export default {
       if (e.keyCode === 13) {
         this.search();
       }
-    },
-  },
+    }
+  }
 };
 </script>
 
 <style>
 div {
-  padding: 5px;
+  margin: 1px 10px 1px 10px;
 }
 </style>

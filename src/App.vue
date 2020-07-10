@@ -1,6 +1,7 @@
 <template>
   <v-app>
     <v-app-bar app color="#fff" flat prominent dense hide-on-scroll>
+      <v-spacer></v-spacer>
       <v-img
         alt="Vuetify Logo"
         class="shrink mr-2"
@@ -9,6 +10,7 @@
         transition="scale-transition"
         width="200px"
       />
+      <v-spacer></v-spacer>
     </v-app-bar>
 
     <v-content>
@@ -24,11 +26,11 @@ export default {
   name: "App",
 
   components: {
-    Unsplash,
+    Unsplash
   },
 
   data: () => ({
     //
-  }),
+  })
 };
 </script>
