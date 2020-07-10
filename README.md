@@ -1,12 +1,13 @@
 # Face Splash
 
+![](./tutorial/main.png)
 ---
 
 # Overview
 
 Facial, sentiment, age, and sex detection analysis of Unsplash images. The application is built using Vue 3, Unsplash API, and [justadudewhohack's](https://github.com/justadudewhohacks) [face-api.js](https://justadudewhohacks.github.io/face-api.js/docs/index.html).
 
-[Live Demo](https://face-splash.herokuapp.com/)
+[**Live Demo**](https://face-splash.herokuapp.com/)
 
 # Local Deployment
 
