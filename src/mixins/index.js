@@ -2,7 +2,7 @@ import * as faceAPI from "face-api.js";
 
 // eslint-disable-next-line no-unused-vars
 
-const confidenceThresh = 0.3;
+const confidenceThresh = 0.5;
 
 faceAPI.env.monkeyPatch({
   canvas: HTMLCanvasElement,
