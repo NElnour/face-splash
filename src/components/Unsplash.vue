@@ -1,7 +1,7 @@
 <template>
   <div>
     <SearchBar @refresh-view="refreshView" />
-    <UnsplashDeck ref="imagesList"/>
+    <UnsplashDeck ref="imagesList" />
   </div>
 </template>
 

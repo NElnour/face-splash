@@ -27,16 +27,19 @@ export default new Vuex.Store({
     },
     setImages: state => {
       state.images = [];
-      unsplash.search.photos(state.searchQuery, 1, 10).then(toJson).then(result => {
-        result.results.forEach(entry => {
-          state.images.push(entry.urls.small);
+      unsplash.search
+        .photos(state.searchQuery, 1, 10)
+        .then(toJson)
+        .then(result => {
+          result.results.forEach(entry => {
+            state.images.push(entry.urls.small);
+          });
         });
-      })
     }
   },
   actions: {
     search(context) {
-      context.commit('setImages');
+      context.commit("setImages");
     }
   },
   modules: {}

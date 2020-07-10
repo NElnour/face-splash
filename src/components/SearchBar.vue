@@ -1,13 +1,17 @@
 <template>
-  <span>
-    <input
+  <div>
+    <v-text-field
       type="text"
+      regular
       placeholder="try searching for 'dog'"
       id="search-bar"
       v-on:keyup="validateQuery"
-    />
-    <button @click="search">Search</button>
-  </span>
+    >
+      <v-btn slot="append" icon color="#ff1493" @click="search"
+        ><v-icon>mdi-image-search</v-icon></v-btn
+      >
+    </v-text-field>
+  </div>
 </template>
 
 <script>
@@ -16,12 +20,12 @@ import { mapMutations, mapActions } from "vuex";
 export default {
   methods: {
     ...mapMutations({ setSearchQuery: "setSearchQuery" }),
-    ...mapActions({ searchUnsplash: "search"}),
+    ...mapActions({ searchUnsplash: "search" }),
     search: function() {
       let query = document.getElementById("search-bar").value;
       this.setSearchQuery(query);
       this.searchUnsplash();
-      this.$emit('refresh-view')
+      this.$emit("refresh-view");
     },
     validateQuery: function(e) {
       if (e.keyCode === 13) {
@@ -33,23 +37,7 @@ export default {
 </script>
 
 <style>
-input {
-  width: 80%;
-  border-top: none;
-  border-right: none;
-  border-left: none;
-}
-input:active,
-input:focus,
-button:active,
-button:focus {
-  outline: none;
-}
-button {
-  border-radius: 40px;
-  margin-left: 3%;
-  background-color: deeppink;
-  color: white;
-  border-color: transparent;
+div {
+  padding: 5px;
 }
 </style>
