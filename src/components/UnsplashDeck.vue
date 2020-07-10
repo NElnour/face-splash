@@ -18,27 +18,58 @@
             crossorigin="anonymous"
           />
           <v-card-actions>
-            <v-btn icon @click="guessFaces(imageSrc)">
-              <v-icon>mdi-face-recognition</v-icon>
-            </v-btn>
-            <v-spacer></v-spacer>
-            <v-btn icon @click="guessSentiment(imageSrc)">
-              <v-icon>mdi-emoticon</v-icon>
-            </v-btn>
-            <v-spacer></v-spacer>
-            <v-btn icon @click="guessAgeGender(imageSrc)">
-              <v-icon>mdi-gender-male-female</v-icon>
+            <v-btn
+              icon
+              color="#a13d63"
+              @click="
+                dialog = true;
+                currImage = imageSrc;
+              "
+            >
+              <v-icon>mdi-function-variant</v-icon>
             </v-btn>
           </v-card-actions>
         </v-card>
+        <v-dialog
+          v-model="dialog"
+          fullscreen
+          hide-overlay
+          transition="dialog-bottom-transition"
+        >
+          <v-card class="dialog-card">
+            <v-card-actions class="dialog-actions">
+              <v-btn icon color="#4d4d4d" @click="guessFaces">
+                <v-icon>mdi-face-recognition</v-icon>
+              </v-btn>
+              <v-spacer></v-spacer>
+              <v-btn icon color="#4d4d4d" @click="guessSentiment">
+                <v-icon>mdi-emoticon</v-icon>
+              </v-btn>
+              <v-spacer></v-spacer>
+              <v-btn icon color="#4d4d4d" @click="guessAgeGender">
+                <v-icon>mdi-gender-male-female</v-icon>
+              </v-btn>
+              <v-spacer></v-spacer>
+              <v-btn
+                icon
+                color="#4d4d4d"
+                @click="
+                  dialog = false;
+                  clearCanvas();
+                "
+              >
+                <v-icon>mdi-close</v-icon>
+              </v-btn>
+            </v-card-actions>
+            <canvas
+              ref="mappedImage"
+              width="5"
+              height="5"
+              class="mapped-image"
+            ></canvas>
+          </v-card>
+        </v-dialog>
       </masonry>
-    </div>
-    <div class="canvas">
-      <canvas
-        ref="mappedImage"
-        width="5"
-        height="5"
-      ></canvas>
     </div>
   </v-main>
 </template>
@@ -51,27 +82,39 @@ export default {
   data() {
     return {
       images: [],
+      dialog: false,
+      currImage: "",
     };
   },
   methods: {
     ...mapGetters({ getImages: "getImages" }),
+    clearCanvas() {
+      let ctx = this.$refs.mappedImage.getContext("2d");
+      ctx.clearRect(
+        0,
+        0,
+        this.$refs.mappedImage.width,
+        this.$refs.mappedImage.height
+      );
+    },
     setImages() {
       this.images = this.getImages();
     },
     getUrl(imageSrc) {
       return imageSrc;
     },
-    guessFaces(imageSrc) {
-      console.log(this.$refs.mappedImage);
-      let image = document.getElementById(imageSrc);
+    guessFaces() {
+      console.log(this.currImage);
+
+      let image = document.getElementById(this.currImage);
       faceDetect(image, this.$refs.mappedImage);
     },
-    guessAgeGender(imageSrc) {
-      let image = document.getElementById(imageSrc);
+    guessAgeGender() {
+      let image = document.getElementById(this.currImage);
       ageAndGenderDetect(image, this.$refs.mappedImage);
     },
-    guessSentiment(imageSrc) {
-      let image = document.getElementById(imageSrc);
+    guessSentiment() {
+      let image = document.getElementById(this.currImage);
       sentimentDetect(image, this.$refs.mappedImage);
     },
   },
@@ -82,14 +125,19 @@ export default {
 div {
   padding: auto;
 }
-.canvas {
-  position: fixed;
-  z-index: 2;
-  bottom: 0;
-  margin: 0;
-}
 .card {
   margin-bottom: 3%;
+}
+.dialog-card {
+  align-items: center;
+  text-align: center;
+}
+.mapped-image {
+  margin-top: 25%;
+}
+.dialog-actions {
+ //background-color: #c8e9a0;
+ background-color: #6dd3ce;
 }
 </style>
 // load manifest or model weights JSONs to load models // map each model to

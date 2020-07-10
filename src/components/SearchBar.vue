@@ -3,11 +3,11 @@
     <v-text-field
       type="text"
       regular
-      placeholder="try searching for 'dog'"
+      placeholder="try searching for 'people'"
       id="search-bar"
       v-on:keyup="validateQuery"
     >
-      <v-btn slot="append" icon color="#ff1493" @click="search"
+      <v-btn slot="append" icon color="#a13d63" @click="search"
         ><v-icon>mdi-image-search</v-icon></v-btn
       >
     </v-text-field>
