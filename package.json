@@ -3,7 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "serve": "vue-cli-service serve",
+    "serve": "node server.js",
     "build": "vue-cli-service build",
     "lint": "vue-cli-service lint"
   },
@@ -16,6 +16,7 @@
     "canvas": "^2.6.1",
     "core-js": "^3.6.5",
     "deepmerge": "^4.2.2",
+    "express": "^4.17.1",
     "face-api.js": "^0.22.2",
     "fibers": "^5.0.0",
     "roboto-fontface": "*",
